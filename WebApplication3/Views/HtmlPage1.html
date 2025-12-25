@@ -1,0 +1,231 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宝宝学拼音 - 四模块版</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f5f9ff;
+            font-family: "微软雅黑", sans-serif;
+            padding: 15px;
+        }
+        /* 顶部标题 */
+        .top-title {
+            text-align: center;
+            font-size: 45px;
+            color: #ff5c87;
+            font-weight: bold;
+            margin: 10px 0 25px;
+        }
+        /* 通用模块样式（4个模块统一风格） */
+        .pinyin-module {
+            margin: 25px 0;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 22px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border: 1px solid #f0f4ff;
+        }
+
+        .module-title {
+            font-size: 32px;
+            color: #2f54d0;
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e6f0ff;
+        }
+        /* 拼音项+按钮通用样式 */
+        .item-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            justify-content: center;
+        }
+
+        .pinyin-item {
+            font-size: 38px;
+            color: #2d3436;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .play-btn, .spell-btn, .game-btn {
+            padding: 8px 18px;
+            font-size: 17px;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            width: 110px;
+            transition: background-color 0.2s;
+        }
+
+        .play-btn {
+            background-color: #66b2ff;
+        }
+
+            .play-btn:hover {
+                background-color: #2f86eb;
+            }
+
+        .spell-btn {
+            background-color: #ff9e42;
+        }
+
+            .spell-btn:hover {
+                background-color: #ff8a18;
+            }
+
+        .game-btn {
+            background-color: #7873f5;
+        }
+
+            .game-btn:hover {
+                background-color: #5d56e9;
+            }
+        /* 拼读模块专属样式 */
+        .spell-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-size: 36px;
+            margin: 15px 0;
+        }
+
+        .spell-item {
+            color: #ff5c87;
+            font-weight: bold;
+        }
+        /* 闯关模块专属样式 */
+        .game-box {
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .game-tip {
+            font-size: 18px;
+            color: #666;
+            margin: 10px 0 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部标题 -->
+    <h1 class="top-title">宝宝拼音小课堂</h1>
+
+    <!-- 模块1：声母认读（核心基础） -->
+    <section class="pinyin-module">
+        <h2 class="module-title">模块1 - 声母认读</h2>
+        <div class="item-list">
+            <div class="pinyin-item" data-pinyin="b">b <button class="play-btn">发音</button></div>
+            <div class="pinyin-item" data-pinyin="p">p <button class="play-btn">发音</button></div>
+            <div class="pinyin-item" data-pinyin="m">m <button class="play-btn">发音</button></div>
+            <div class="pinyin-item" data-pinyin="f">f <button class="play-btn">发音</button></div>
+            <div class="pinyin-item" data-pinyin="d">d <button class="play-btn">发音</button></div>
+            <div class="pinyin-item" data-pinyin="t">t <button class="play-btn">发音</button></div>
+            <div class="pinyin-item" data-pinyin="n">n <button class="play-btn">发音</button></div>
+            <div class="pinyin-item" data-pinyin="l">l <button class="play-btn">发音</button></div>
+        </div>
+    </section>
+
+    <!-- 模块2：韵母认读（核心基础） -->
+    <section class="pinyin-module">
+        <h2 class="module-title">模块2 - 韵母认读</h2>
+        <div class="item-list">
+            <div class="pinyin-item" data-pinyin="a">a <button class="play-btn">发音</button></div>
+            <div class="pinyin-item" data-pinyin="o">o <button class="play-btn">发音</button></div>
+            <div class="pinyin-item" data-pinyin="e">e <button class="play-btn">发音</button></div>
+            <div class="pinyin-item" data-pinyin="i">i <button class="play-btn">发音</button></div>
+            <div class="pinyin-item" data-pinyin="u">u <button class="play-btn">发音</button></div>
+            <div class="pinyin-item" data-pinyin="ü">ü <button class="play-btn">发音</button></div>
+            <div class="pinyin-item" data-pinyin="ai">ai <button class="play-btn">发音</button></div>
+            <div class="pinyin-item" data-pinyin="ei">ei <button class="play-btn">发音</button></div>
+        </div>
+    </section>
+
+    <!-- 模块3：拼音拼读（核心应用） -->
+    <section class="pinyin-module">
+        <h2 class="module-title">模块3 - 拼音拼读</h2>
+        <div class="spell-group">
+            <span class="spell-item" data-pinyin="b">b</span>
+            <span>+</span>
+            <span class="spell-item" data-pinyin="a">a</span>
+            <span>=</span>
+            <button class="spell-btn" data-s1="b" data-s2="a">拼读音节</button>
+        </div>
+        <div class="spell-group">
+            <span class="spell-item" data-pinyin="m">m</span>
+            <span>+</span>
+            <span class="spell-item" data-pinyin="a">a</span>
+            <span>=</span>
+            <button class="spell-btn" data-s1="m" data-s2="a">拼读音节</button>
+        </div>
+        <div class="spell-group">
+            <span class="spell-item" data-pinyin="d">d</span>
+            <span>+</span>
+            <span class="spell-item" data-pinyin="i">i</span>
+            <span>=</span>
+            <button class="spell-btn" data-s1="d" data-s2="i">拼读音节</button>
+        </div>
+        <div class="spell-group">
+            <span class="spell-item" data-pinyin="l">l</span>
+            <span>+</span>
+            <span class="spell-item" data-pinyin="i">i</span>
+            <span>=</span>
+            <button class="spell-btn" data-s1="l" data-s2="i">拼读音节</button>
+        </div>
+    </section>
+
+    <!-- 模块4：趣味闯关（巩固练习） -->
+    <section class="pinyin-module">
+        <h2 class="module-title">模块4 - 趣味闯关</h2>
+        <div class="game-box">
+            <p class="game-tip">闯关规则：点击按钮，听发音找对应拼音（简易版）</p>
+            <button class="game-btn" onclick="alert('闯关开启！先听b的发音，找到对应拼音~')">开始第一关</button>
+            <button class="game-btn" onclick="alert('第二关：听a的发音，完成b+a拼读~')">开始第二关</button>
+            <button class="game-btn" onclick="alert('闯关成功！宝宝真棒~')">查看闯关结果</button>
+        </div>
+    </section>
+
+    <script>
+        // 核心发音函数（适配所有模块发音需求）
+        function playAudio(pinyin) {
+            // 音频路径：当前html同目录下 建 assets/audio 文件夹放mp3（如b.mp3、ba.mp3）
+            const audioUrl = `./assets/audio/${pinyin}.mp3`;
+            const audio = new Audio(audioUrl);
+            audio.play().catch(err => {
+                alert(`暂无【${pinyin}】的发音文件，添加后即可正常播放~`);
+                console.log(err);
+            });
+        }
+
+        // 模块1、2 单个拼音发音（声母+韵母通用）
+        document.querySelectorAll(".play-btn").forEach(btn => {
+            btn.addEventListener("click", function() {
+                const targetPinyin = this.parentElement.dataset.pinyin;
+                playAudio(targetPinyin);
+            });
+        });
+
+        // 模块3 拼音拼读发音（两拼音节组合）
+        document.querySelectorAll(".spell-btn").forEach(btn => {
+            btn.addEventListener("click", function() {
+                const s1 = this.dataset.s1;
+                const s2 = this.dataset.s2;
+                const combinePinyin = s1 + s2;
+                playAudio(combinePinyin);
+            });
+        });
+    </script>
+</body>
+</html>
