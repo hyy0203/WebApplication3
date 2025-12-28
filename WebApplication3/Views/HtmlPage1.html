@@ -3,229 +3,345 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>宝宝学拼音 - 四模块版</title>
+    <title>萌娃拼音小天地</title>
     <style>
+        /* 全局样式：糖果童话风，圆润边角、明亮糖果色 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: "华文琥珀", "幼圆", "微软雅黑", sans-serif;
         }
 
         body {
-            background-color: #f5f9ff;
-            font-family: "微软雅黑", sans-serif;
-            padding: 15px;
-        }
-        /* 顶部标题 */
-        .top-title {
-            text-align: center;
-            font-size: 45px;
-            color: #ff5c87;
-            font-weight: bold;
-            margin: 10px 0 25px;
-        }
-        /* 通用模块样式（4个模块统一风格） */
-        .pinyin-module {
-            margin: 25px 0;
-            padding: 20px;
-            background-color: #ffffff;
-            border-radius: 22px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            border: 1px solid #f0f4ff;
+            background-color: #fdf2f8; /* 浅粉色底 */
+            color: #4a4a4a;
+            padding-bottom: 50px;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffc2e2' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E");
         }
 
-        .module-title {
-            font-size: 32px;
-            color: #2f54d0;
+        /* 头部样式：糖果红+云朵阴影 */
+        header {
+            background: linear-gradient(135deg, #ff6b9d 0%, #ff8fc3 100%);
+            padding: 25px;
             text-align: center;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #e6f0ff;
+            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
         }
-        /* 拼音项+按钮通用样式 */
-        .item-list {
+
+        h1 {
+            font-size: 2.8rem;
+            color: white;
+            text-shadow: 3px 3px 0px rgba(0,0,0,0.1);
+            letter-spacing: 2px;
+        }
+
+        /* 导航栏：拼音分类 - 薄荷绿系 */
+        .nav-container {
             display: flex;
+            justify-content: center;
             flex-wrap: wrap;
-            gap: 18px;
-            justify-content: center;
+            gap: 15px;
+            padding: 25px;
+            background-color: white;
+            margin: 30px auto;
+            max-width: 1200px;
+            border-radius: 20px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+            border: 2px solid #e8f4f8;
         }
 
-        .pinyin-item {
-            font-size: 38px;
-            color: #2d3436;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .play-btn, .spell-btn, .game-btn {
-            padding: 8px 18px;
-            font-size: 17px;
-            color: #fff;
+        .nav-btn {
+            padding: 18px 30px;
+            background: linear-gradient(135deg, #76d7c4 0%, #a8e6cf 100%);
+            color: white;
             border: none;
-            border-radius: 25px;
+            border-radius: 50px;
+            font-size: 1.3rem;
             cursor: pointer;
-            width: 110px;
-            transition: background-color 0.2s;
-        }
-
-        .play-btn {
-            background-color: #66b2ff;
-        }
-
-            .play-btn:hover {
-                background-color: #2f86eb;
-            }
-
-        .spell-btn {
-            background-color: #ff9e42;
-        }
-
-            .spell-btn:hover {
-                background-color: #ff8a18;
-            }
-
-        .game-btn {
-            background-color: #7873f5;
-        }
-
-            .game-btn:hover {
-                background-color: #5d56e9;
-            }
-        /* 拼读模块专属样式 */
-        .spell-group {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            font-size: 36px;
-            margin: 15px 0;
-        }
-
-        .spell-item {
-            color: #ff5c87;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 8px rgba(118, 215, 196, 0.3);
             font-weight: bold;
         }
-        /* 闯关模块专属样式 */
-        .game-box {
-            text-align: center;
-            padding: 10px 0;
+
+            .nav-btn:hover {
+                background: linear-gradient(135deg, #45b798 0%, #76d7c4 100%);
+                transform: scale(1.08) translateY(-3px);
+                box-shadow: 0 6px 15px rgba(118, 215, 196, 0.5);
+            }
+
+            .nav-btn.active {
+                background: linear-gradient(135deg, #ff6b9d 0%, #ff8fc3 100%);
+            }
+
+        /* 拼音展示区 */
+        .pinyin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 25px;
         }
 
-        .game-tip {
-            font-size: 18px;
-            color: #666;
-            margin: 10px 0 15px;
+        /* 拼音卡片：糖果圆角+立体阴影 */
+        .pinyin-card {
+            background: white;
+            border-radius: 25px;
+            padding: 35px 15px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            border: 3px solid #fef0f7;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .pinyin-card::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 8px;
+                background: linear-gradient(90deg, #ff6b9d, #76d7c4, #ffd166);
+            }
+
+            .pinyin-card:hover {
+                transform: translateY(-8px) rotate(1deg);
+                box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+            }
+
+        .pinyin-char {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #ff6b9d;
+            margin-bottom: 12px;
+            text-shadow: 2px 2px 4px rgba(255, 107, 157, 0.2);
+        }
+
+        .pinyin-tip {
+            font-size: 1.1rem;
+            color: #6b7280;
+            margin-bottom: 15px;
+        }
+
+        /* 发音按钮：阳光黄系 */
+        .sound-btn {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #ffd166 0%, #ffdd94 100%);
+            color: #4a4a4a;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 8px rgba(255, 209, 102, 0.4);
+        }
+
+            .sound-btn:hover {
+                background: linear-gradient(135deg, #ffc107 0%, #ffd166 100%);
+                transform: scale(1.05);
+                box-shadow: 0 5px 12px rgba(255, 209, 102, 0.6);
+            }
+
+        /* 底部说明 */
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #6b7280;
+            font-size: 1.1rem;
+            margin-top: 40px;
+            background-color: white;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.05);
+        }
+
+        /* 响应式适配：手机端优化 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .nav-btn {
+                padding: 12px 20px;
+                font-size: 1.1rem;
+            }
+
+            .pinyin-char {
+                font-size: 2.8rem;
+            }
+
+            .pinyin-container {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                gap: 15px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- 顶部标题 -->
-    <h1 class="top-title">宝宝拼音小课堂</h1>
+    <!-- 头部：新名称 -->
+    <header>
+        <h1>萌娃拼音小天地 🍬</h1>
+    </header>
 
-    <!-- 模块1：声母认读（核心基础） -->
-    <section class="pinyin-module">
-        <h2 class="module-title">模块1 - 声母认读</h2>
-        <div class="item-list">
-            <div class="pinyin-item" data-pinyin="b">b <button class="play-btn">发音</button></div>
-            <div class="pinyin-item" data-pinyin="p">p <button class="play-btn">发音</button></div>
-            <div class="pinyin-item" data-pinyin="m">m <button class="play-btn">发音</button></div>
-            <div class="pinyin-item" data-pinyin="f">f <button class="play-btn">发音</button></div>
-            <div class="pinyin-item" data-pinyin="d">d <button class="play-btn">发音</button></div>
-            <div class="pinyin-item" data-pinyin="t">t <button class="play-btn">发音</button></div>
-            <div class="pinyin-item" data-pinyin="n">n <button class="play-btn">发音</button></div>
-            <div class="pinyin-item" data-pinyin="l">l <button class="play-btn">发音</button></div>
-        </div>
-    </section>
+    <!-- 拼音分类导航 -->
+    <div class="nav-container">
+        <button class="nav-btn active" data-type="yinmu">声母</button>
+        <button class="nav-btn" data-type="yunmu">韵母</button>
+        <button class="nav-btn" data-type="shengdiao">声调练习</button>
+    </div>
 
-    <!-- 模块2：韵母认读（核心基础） -->
-    <section class="pinyin-module">
-        <h2 class="module-title">模块2 - 韵母认读</h2>
-        <div class="item-list">
-            <div class="pinyin-item" data-pinyin="a">a <button class="play-btn">发音</button></div>
-            <div class="pinyin-item" data-pinyin="o">o <button class="play-btn">发音</button></div>
-            <div class="pinyin-item" data-pinyin="e">e <button class="play-btn">发音</button></div>
-            <div class="pinyin-item" data-pinyin="i">i <button class="play-btn">发音</button></div>
-            <div class="pinyin-item" data-pinyin="u">u <button class="play-btn">发音</button></div>
-            <div class="pinyin-item" data-pinyin="ü">ü <button class="play-btn">发音</button></div>
-            <div class="pinyin-item" data-pinyin="ai">ai <button class="play-btn">发音</button></div>
-            <div class="pinyin-item" data-pinyin="ei">ei <button class="play-btn">发音</button></div>
-        </div>
-    </section>
+    <!-- 拼音展示区域 -->
+    <div class="pinyin-container" id="pinyinContainer">
+        <!-- 内容由JS动态生成 -->
+    </div>
 
-    <!-- 模块3：拼音拼读（核心应用） -->
-    <section class="pinyin-module">
-        <h2 class="module-title">模块3 - 拼音拼读</h2>
-        <div class="spell-group">
-            <span class="spell-item" data-pinyin="b">b</span>
-            <span>+</span>
-            <span class="spell-item" data-pinyin="a">a</span>
-            <span>=</span>
-            <button class="spell-btn" data-s1="b" data-s2="a">拼读音节</button>
-        </div>
-        <div class="spell-group">
-            <span class="spell-item" data-pinyin="m">m</span>
-            <span>+</span>
-            <span class="spell-item" data-pinyin="a">a</span>
-            <span>=</span>
-            <button class="spell-btn" data-s1="m" data-s2="a">拼读音节</button>
-        </div>
-        <div class="spell-group">
-            <span class="spell-item" data-pinyin="d">d</span>
-            <span>+</span>
-            <span class="spell-item" data-pinyin="i">i</span>
-            <span>=</span>
-            <button class="spell-btn" data-s1="d" data-s2="i">拼读音节</button>
-        </div>
-        <div class="spell-group">
-            <span class="spell-item" data-pinyin="l">l</span>
-            <span>+</span>
-            <span class="spell-item" data-pinyin="i">i</span>
-            <span>=</span>
-            <button class="spell-btn" data-s1="l" data-s2="i">拼读音节</button>
-        </div>
-    </section>
-
-    <!-- 模块4：趣味闯关（巩固练习） -->
-    <section class="pinyin-module">
-        <h2 class="module-title">模块4 - 趣味闯关</h2>
-        <div class="game-box">
-            <p class="game-tip">闯关规则：点击按钮，听发音找对应拼音（简易版）</p>
-            <button class="game-btn" onclick="alert('闯关开启！先听b的发音，找到对应拼音~')">开始第一关</button>
-            <button class="game-btn" onclick="alert('第二关：听a的发音，完成b+a拼读~')">开始第二关</button>
-            <button class="game-btn" onclick="alert('闯关成功！宝宝真棒~')">查看闯关结果</button>
-        </div>
-    </section>
+    <!-- 底部 -->
+    <footer>
+        萌娃快乐学拼音 | 点击按钮听标准发音哦 🎶
+    </footer>
 
     <script>
-        // 核心发音函数（适配所有模块发音需求）
-        function playAudio(pinyin) {
-            // 音频路径：当前html同目录下 建 assets/audio 文件夹放mp3（如b.mp3、ba.mp3）
-            const audioUrl = `./assets/audio/${pinyin}.mp3`;
-            const audio = new Audio(audioUrl);
-            audio.play().catch(err => {
-                alert(`暂无【${pinyin}】的发音文件，添加后即可正常播放~`);
-                console.log(err);
+        // ======================== 拼音数据配置 ========================
+        const pinyinData = {
+            // 声母数据
+            yinmu: [
+                { char: "b", tip: "播 (轻短)", sound: "b" },
+                { char: "p", tip: "坡 (轻短)", sound: "p" },
+                { char: "m", tip: "摸 (轻短)", sound: "m" },
+                { char: "f", tip: "佛 (轻短)", sound: "f" },
+                { char: "d", tip: "得 (轻短)", sound: "d" },
+                { char: "t", tip: "特 (轻短)", sound: "t" },
+                { char: "n", tip: "讷 (轻短)", sound: "n" },
+                { char: "l", tip: "勒 (轻短)", sound: "l" },
+                { char: "g", tip: "哥 (轻短)", sound: "g" },
+                { char: "k", tip: "科 (轻短)", sound: "k" },
+                { char: "h", tip: "喝 (轻短)", sound: "h" },
+                { char: "j", tip: "鸡 (轻短)", sound: "j" },
+                { char: "q", tip: "七 (轻短)", sound: "q" },
+                { char: "x", tip: "西 (轻短)", sound: "x" },
+                { char: "zh", tip: "知 (轻短)", sound: "zh" },
+                { char: "ch", tip: "吃 (轻短)", sound: "ch" },
+                { char: "sh", tip: "诗 (轻短)", sound: "sh" },
+                { char: "r", tip: "日 (轻短)", sound: "r" },
+                { char: "z", tip: "资 (轻短)", sound: "z" },
+                { char: "c", tip: "雌 (轻短)", sound: "c" },
+                { char: "s", tip: "思 (轻短)", sound: "s" },
+                { char: "y", tip: "衣 (轻短)", sound: "y" },
+                { char: "w", tip: "乌 (轻短)", sound: "w" }
+            ],
+            // 韵母数据
+            yunmu: [
+                { char: "a", tip: "啊 (响亮)", sound: "a" },
+                { char: "o", tip: "喔 (响亮)", sound: "o" },
+                { char: "e", tip: "鹅 (响亮)", sound: "e" },
+                { char: "i", tip: "衣 (响亮)", sound: "i" },
+                { char: "u", tip: "乌 (响亮)", sound: "u" },
+                { char: "ü", tip: "鱼 (响亮)", sound: "v" },
+                { char: "ai", tip: "爱 (响亮)", sound: "ai" },
+                { char: "ei", tip: "诶 (响亮)", sound: "ei" },
+                { char: "ui", tip: "威 (响亮)", sound: "ui" },
+                { char: "ao", tip: "奥 (响亮)", sound: "ao" },
+                { char: "ou", tip: "欧 (响亮)", sound: "ou" },
+                { char: "iu", tip: "优 (响亮)", sound: "iu" },
+                { char: "ie", tip: "耶 (响亮)", sound: "ie" },
+                { char: "üe", tip: "约 (响亮)", sound: "ve" },
+                { char: "er", tip: "儿 (响亮)", sound: "er" },
+                { char: "an", tip: "安 (响亮)", sound: "an" },
+                { char: "en", tip: "恩 (响亮)", sound: "en" },
+                { char: "in", tip: "因 (响亮)", sound: "in" },
+                { char: "un", tip: "温 (响亮)", sound: "un" },
+                { char: "ün", tip: "晕 (响亮)", sound: "vn" },
+                { char: "ang", tip: "昂 (响亮)", sound: "ang" },
+                { char: "eng", tip: "亨 (响亮)", sound: "eng" },
+                { char: "ing", tip: "英 (响亮)", sound: "ing" },
+                { char: "ong", tip: "轰 (响亮)", sound: "ong" }
+            ],
+            // 声调练习数据
+            shengdiao: [
+                { char: "mā", tip: "一声（平）", sound: "ma1" },
+                { char: "má", tip: "二声（扬）", sound: "ma2" },
+                { char: "mǎ", tip: "三声（拐）", sound: "ma3" },
+                { char: "mà", tip: "四声（降）", sound: "ma4" },
+                { char: "fā", tip: "一声（平）", sound: "fa1" },
+                { char: "fá", tip: "二声（扬）", sound: "fa2" },
+                { char: "fǎ", tip: "三声（拐）", sound: "fa3" },
+                { char: "fà", tip: "四声（降）", sound: "fa4" },
+                { char: "lā", tip: "一声（平）", sound: "la1" },
+                { char: "lá", tip: "二声（扬）", sound: "la2" },
+                { char: "lǎ", tip: "三声（拐）", sound: "la3" },
+                { char: "là", tip: "四声（降）", sound: "la4" }
+            ]
+        };
+
+        // ======================== 核心功能 ========================
+        const pinyinContainer = document.getElementById('pinyinContainer');
+        const navBtns = document.querySelectorAll('.nav-btn');
+
+        // 初始化：默认显示声母
+        initPinyin('yinmu');
+
+        // 导航按钮点击事件
+        navBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                navBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const type = btn.getAttribute('data-type');
+                initPinyin(type);
+            });
+        });
+
+        /**
+         * 初始化拼音展示区
+         */
+        function initPinyin(type) {
+            pinyinContainer.innerHTML = '';
+            const data = pinyinData[type];
+            if (!data) return;
+
+            data.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'pinyin-card';
+
+                const charEl = document.createElement('div');
+                charEl.className = 'pinyin-char';
+                charEl.textContent = item.char;
+
+                const tipEl = document.createElement('div');
+                tipEl.className = 'pinyin-tip';
+                tipEl.textContent = item.tip;
+
+                const soundBtn = document.createElement('button');
+                soundBtn.className = 'sound-btn';
+                soundBtn.textContent = '🔔 听发音';
+                soundBtn.addEventListener('click', () => playSound(item.sound));
+
+                card.appendChild(charEl);
+                card.appendChild(tipEl);
+                card.appendChild(soundBtn);
+                pinyinContainer.appendChild(card);
             });
         }
 
-        // 模块1、2 单个拼音发音（声母+韵母通用）
-        document.querySelectorAll(".play-btn").forEach(btn => {
-            btn.addEventListener("click", function() {
-                const targetPinyin = this.parentElement.dataset.pinyin;
-                playAudio(targetPinyin);
-            });
-        });
-
-        // 模块3 拼音拼读发音（两拼音节组合）
-        document.querySelectorAll(".spell-btn").forEach(btn => {
-            btn.addEventListener("click", function() {
-                const s1 = this.dataset.s1;
-                const s2 = this.dataset.s2;
-                const combinePinyin = s1 + s2;
-                playAudio(combinePinyin);
-            });
-        });
+        /**
+         * 播放拼音发音
+         */
+        function playSound(pinyin) {
+            try {
+                const soundUrl = `https://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=5&text=${pinyin}`;
+                const audio = new Audio(soundUrl);
+                audio.play();
+                console.log(`播放发音：${pinyin}`);
+            } catch (error) {
+                alert('发音播放失败，请检查网络哦！');
+                console.error('发音播放错误：', error);
+            }
+        }
     </script>
 </body>
 </html>
